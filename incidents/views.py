@@ -24,6 +24,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.staticfiles import finders
+from rest_framework import viewsets
+from incidents.serializers import IncidentAPISerializer
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 import os, tempfile, zipfile, re, mimetypes, datetime
 from dateutil.relativedelta import *
@@ -2088,3 +2092,13 @@ def mce_config(request):
 			lang = "en"
 	return TemplateResponse(request, "tools/mce_config.js", context={"mce_lang": lang},
                             content_type="application/javascript")
+
+
+# api ===============================================================
+
+
+class IncidentViewSet(viewsets.ModelViewSet):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Incident.objects.all()
+    serializer_class = IncidentAPISerializer

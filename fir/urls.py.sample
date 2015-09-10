@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	url(r'^tools/', include('incidents.custom_urls.tools', namespace='tools')),
     url(r'^incidents/', include('incidents.urls', namespace='incidents')),
+    url(r'^api/', include('incidents.custom_urls.api', namespace='api_incidents')),
     url(r'^search/$', 'incidents.views.search', name='search'),
     url(r'^events/', include('incidents.custom_urls.events', namespace='events')),
     url(r'^login/', 'incidents.views.user_login', name='login'),            # have a "main module"

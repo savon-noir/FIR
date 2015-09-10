@@ -23,6 +23,39 @@ FIR is written in Python (but you probably already knew that), using Django 1.7.
 
 FIR is not greedy performance-wise. It will run smoothly on a Ubuntu 14.04 virtual machine with 1 core, a 40 GB disk and 1 GB RAM.
 
+# Restful API
+For the restful API, a base token-based athentication as been configured. To create a token, you would need to run the following:
+
+```
+python manage.py create_token <user> <user2> ...
+```
+
+This will echo back a token to be used as followed:
+
+```
+curl -X GET http://127.0.0.1:8000/api/incidents/ -H 'Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b'
+```
+
+If successfully authenticated, TokenAuthentication provides the following credentials::
+
+    - request.user will be a Django User instance.
+    - request.auth will be a rest_framework.authtoken.models.BasicToken instance.
+
+Unauthenticated responses that are denied permission will result in an HTTP 401 Unauthorized response with an appropriate
+
+To list active tokens, run the following command:
+```
+python manage.py list_tokens
+```
+
+
+For more information, consider reading documentation at [django-rest-framework](http://www.django-rest-framework.org).
+
+API so far only supports:
+
+- listing all events/incidents (GET)
+- adding new event/incidents (POST)
+
 # Roadmap
 
 * Nested Todos

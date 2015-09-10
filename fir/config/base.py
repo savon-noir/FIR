@@ -81,7 +81,9 @@ INSTALLED_APPS = (
     'incidents',
     'django.contrib.admin',
     'fir_plugins',
-    'fir_artifacts'
+    'fir_artifacts',
+    'rest_framework',
+    'rest_framework.authtoken'
 )
 
 apps_file = os.path.join(BASE_DIR, 'fir', 'config', 'installed_apps.txt')
