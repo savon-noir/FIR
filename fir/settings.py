@@ -32,14 +32,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.SessionAuthentication'),
 }
 
-#REST_FRAMEWORK = {
-#   '''Use hyperlinked styles by default'''
-#   '''only used if serializer_class attribute is not set on a view'''
-#   'DEFAULT_MODEL_SERIALIZER_CLASS':
-#         'rest_framkework.serializers.HyperLinkedModelSerializer',
-#   'DEFAULT_PERMISSION_CLASSES':
-#          'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-# }
 
 try:
     from fir.config.dev import *
